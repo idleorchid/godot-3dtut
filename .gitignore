@@ -12,3 +12,8 @@ export_presets.cfg
 data_*/
 
 .DS_Store
+.sconsign.dblite
+
+project/gdnative/osx/
+
+*.os

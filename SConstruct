@@ -27,7 +27,10 @@ opts.Add(
 )
 opts.Add(
     PathVariable(
-        "target_name", "The library name.", "libdodgethecreeps", PathVariable.PathAccept
+        "target_name",
+        "The library name.",
+        "libsquashthecreeps",
+        PathVariable.PathAccept,
     )
 )
 
