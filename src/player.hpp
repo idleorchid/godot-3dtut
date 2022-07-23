@@ -5,7 +5,6 @@
 #include <Input.hpp>
 #include <KinematicBody.hpp>
 #include <Vector3.hpp>
-#include <Input.hpp>
 #include <Spatial.hpp>
 
 class Player : public godot::KinematicBody
