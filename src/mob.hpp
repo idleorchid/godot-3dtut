@@ -20,7 +20,7 @@ public:
     void _init(){};
     void initialize(godot::Vector3 startPosition, godot::Vector3 playerPosition);
     void _physics_process(const float delta);
-    void _onVisibilityNotifier_screen_exited();
+    void _on_VisibilityNotifier_screen_exited();
     static void _register_methods();
 };
 

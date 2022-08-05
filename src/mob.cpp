@@ -19,7 +19,7 @@ void Mob::_physics_process(const float delta)
     move_and_slide(_velocity);
 }
 
-void Mob::_onVisibilityNotifier_screen_exited()
+void Mob::_on_VisibilityNotifier_screen_exited()
 {
     queue_free();
 }
@@ -30,5 +30,5 @@ void Mob::_register_methods()
     godot::register_property<Mob, int>("maxSpeed", &Mob::maxSpeed, 18);
     godot::register_method("_physics_process", &Mob::_physics_process);
     godot::register_method("initialize", &Mob::initialize);
-    godot::register_method("_onVisibilityNotifier_screen_exited", &Mob::_onVisibilityNotifier_screen_exited);
+    godot::register_method("_on_VisibilityNotifier_screen_exited", &Mob::_on_VisibilityNotifier_screen_exited);
 }
