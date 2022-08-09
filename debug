@@ -1,0 +1,5 @@
+scons platform=osx target=debug arch=arm64
+
+cd project/
+
+/Applications/Godot_mono.app/Contents/MacOS/Godot --debug Main.tscn

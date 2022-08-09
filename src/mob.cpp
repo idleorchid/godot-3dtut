@@ -8,10 +8,11 @@ void Mob::initialize(godot::Vector3 startPosition, godot::Vector3 playerPosition
 
     godot::Ref<godot::RandomNumberGenerator> random = godot::RandomNumberGenerator::_new();
     random->randomize();
-    rotate_y(random->randi_range(-M_PI / 4, M_PI / 4));
+    rotate_y(random->randf_range(-M_PI / 4, M_PI / 4));
 
-    float randomSpeed = random->randi_range(minSpeed, maxSpeed);
+    float randomSpeed = random->randf_range(minSpeed, maxSpeed);
     _velocity = godot::Vector3::FORWARD * randomSpeed;
+
     _velocity = _velocity.rotated(godot::Vector3::UP, get_rotation().y);
 }
 void Mob::_physics_process(const float delta)

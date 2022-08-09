@@ -2,6 +2,7 @@
 
 #include "player.hpp"
 #include "mob.hpp"
+#include "main.hpp"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o)
 {
@@ -19,4 +20,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle)
 
     godot::register_class<Player>();
     godot::register_class<Mob>();
+    godot::register_class<Main>();
 }
