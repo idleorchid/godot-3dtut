@@ -15,6 +15,7 @@
             ],
             "stopOnEntry": false,
             "cwd": "${workspaceFolder}/project",
+            "preLaunchTask": "build"
         }
     ]
 }

@@ -19,6 +19,7 @@ public:
 
     void _init(){};
     void initialize(godot::Vector3 startPosition, godot::Vector3 playerPosition);
+    void squash();
     void _physics_process(const float delta);
     void _on_VisibilityNotifier_screen_exited();
     static void _register_methods();

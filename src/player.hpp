@@ -18,6 +18,8 @@ class Player : public godot::KinematicBody
 public:
     int speed = 14;
     int fallAcceleration = 75;
+    int jumpImpulse = 20;
+    int bounceImpulse = 16;
 
     void _init(){};
     void _ready();
