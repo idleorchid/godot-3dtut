@@ -24,6 +24,8 @@ public:
     void _init(){};
     void _ready();
     void _physics_process(const float delta);
+    void die();
+    void _on_MobDetector_body_entered(godot::Node *body);
 
     static void _register_methods();
 };

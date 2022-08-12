@@ -24,6 +24,7 @@ public:
     void _init(){};
     void _ready();
     void _on_MobTimer_timeout();
+    void _on_Player_hit();
 
     static void _register_methods();
 };

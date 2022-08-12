@@ -59,12 +59,25 @@ void Player::_physics_process(const float delta)
     }
 }
 
+void Player::die()
+{
+    emit_signal("hit");
+    queue_free();
+}
+
+void Player::_on_MobDetector_body_entered(godot::Node *body)
+{
+    die();
+}
+
 void Player::_register_methods()
 {
     godot::register_property<Player, int>("speed", &Player::speed, 14);
     godot::register_property<Player, int>("fallAcceleration", &Player::fallAcceleration, 75);
     godot::register_property<Player, int>("jumpImpulse", &Player::jumpImpulse, 20);
     godot::register_property<Player, int>("bounceImpulse", &Player::bounceImpulse, 16);
+    godot::register_signal<Player>((char *)"hit");
     godot::register_method("_physics_process", &Player::_physics_process);
+    godot::register_method("_on_MobDetector_body_entered", &Player::_on_MobDetector_body_entered);
     godot::register_method("_ready", &Player::_ready);
 }
