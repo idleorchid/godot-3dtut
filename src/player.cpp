@@ -1,9 +1,11 @@
 #include "player.hpp"
 #include <KinematicCollision.hpp>
+#include <AnimationPlayer.hpp>
 #include "mob.hpp"
 
 #include <iostream>
 #include <string>
+#include <math.h>
 
 void Player::_ready()
 {
@@ -35,6 +37,12 @@ void Player::_physics_process(const float delta)
     {
         direction = direction.normalized();
         _pivot->look_at(get_translation() + direction, godot::Vector3::UP);
+
+        get_node<godot::AnimationPlayer>("AnimationPlayer")->set_speed_scale(4);
+    }
+    else
+    {
+        get_node<godot::AnimationPlayer>("AnimationPlayer")->set_speed_scale(1);
     }
     _velocity.x = direction.x * speed;
     _velocity.z = direction.z * speed;
@@ -57,6 +65,8 @@ void Player::_physics_process(const float delta)
             }
         }
     }
+
+    _pivot->set_rotation(godot::Vector3(M_PI / 6.0f * _velocity.y / jumpImpulse, _pivot->get_rotation().y, _pivot->get_rotation().z));
 }
 
 void Player::die()

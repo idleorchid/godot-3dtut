@@ -1,5 +1,6 @@
 #include "mob.hpp"
 #include <RandomNumberGenerator.hpp>
+#include <AnimationPlayer.hpp>
 #include <math.h>
 
 void Mob::initialize(godot::Vector3 startPosition, godot::Vector3 playerPosition)
@@ -14,6 +15,8 @@ void Mob::initialize(godot::Vector3 startPosition, godot::Vector3 playerPosition
     _velocity = godot::Vector3::FORWARD * randomSpeed;
 
     _velocity = _velocity.rotated(godot::Vector3::UP, get_rotation().y);
+
+    get_node<godot::AnimationPlayer>("AnimationPlayer")->set_speed_scale(randomSpeed / minSpeed);
 }
 
 void Mob::squash()
