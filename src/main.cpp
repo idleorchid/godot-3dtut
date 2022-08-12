@@ -1,6 +1,7 @@
 #include "main.hpp"
 
 #include <Timer.hpp>
+#include <SceneTree.hpp>
 
 #include <string>
 #include <iostream>
@@ -11,6 +12,8 @@ void Main::_ready()
     _random = (godot::Ref<godot::RandomNumberGenerator>)godot::RandomNumberGenerator::_new();
     _random->randomize();
     _score_label = get_node<godot::Label>("UserInterface/ScoreLabel");
+
+    get_node<godot::Control>("UserInterface/Retry")->hide();
 }
 
 void Main::_on_MobTimer_timeout()
@@ -29,6 +32,15 @@ void Main::_on_Player_hit()
 {
     godot::Timer *_mob_timer = get_node<godot::Timer>("MobTimer");
     _mob_timer->stop();
+    get_node<godot::Control>("UserInterface/Retry")->show();
+}
+
+void Main::_unhandled_input(godot::InputEvent *input)
+{
+    if (input->is_action_pressed("ui_accept") && get_node<godot::Control>("UserInterface/Retry")->is_visible())
+    {
+        get_tree()->reload_current_scene();
+    }
 }
 
 void Main::_register_methods()
@@ -37,4 +49,5 @@ void Main::_register_methods()
     godot::register_method("_ready", &Main::_ready);
     godot::register_method("_on_MobTimer_timeout", &Main::_on_MobTimer_timeout);
     godot::register_method("_on_Player_hit", &Main::_on_Player_hit);
+    godot::register_method("_unhandled_input", &Main::_unhandled_input);
 }

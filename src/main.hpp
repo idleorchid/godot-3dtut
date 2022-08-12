@@ -7,6 +7,7 @@
 #include <PathFollow.hpp>
 #include <Label.hpp>
 #include <RandomNumberGenerator.hpp>
+#include <InputEvent.hpp>
 
 #include "player.hpp"
 #include "mob.hpp"
@@ -27,6 +28,7 @@ public:
     void _ready();
     void _on_MobTimer_timeout();
     void _on_Player_hit();
+    void _unhandled_input(godot::InputEvent *input);
 
     static void _register_methods();
 };
