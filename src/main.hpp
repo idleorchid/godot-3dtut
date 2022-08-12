@@ -5,6 +5,7 @@
 #include <Node.hpp>
 #include <PackedScene.hpp>
 #include <PathFollow.hpp>
+#include <Label.hpp>
 #include <RandomNumberGenerator.hpp>
 
 #include "player.hpp"
@@ -17,6 +18,7 @@ class Main : public godot::Node
     Player *_player;
     godot::PathFollow *_mob_spawn_location;
     godot::Ref<godot::RandomNumberGenerator> _random;
+    godot::Label *_score_label;
 
 public:
     godot::Ref<godot::PackedScene> mob_scene;

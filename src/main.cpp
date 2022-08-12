@@ -10,6 +10,7 @@ void Main::_ready()
     _player = get_node<Player>("Player");
     _random = (godot::Ref<godot::RandomNumberGenerator>)godot::RandomNumberGenerator::_new();
     _random->randomize();
+    _score_label = get_node<godot::Label>("UserInterface/ScoreLabel");
 }
 
 void Main::_on_MobTimer_timeout()
@@ -21,6 +22,7 @@ void Main::_on_MobTimer_timeout()
     Mob *mob_script = Object::cast_to<Mob>(mob);
     mob_script->initialize(_mob_spawn_location->get_translation(), _player->get_transform().origin);
     add_child(mob);
+    mob->connect("squashed", _score_label, "_on_Mob_squashed");
 }
 
 void Main::_on_Player_hit()
